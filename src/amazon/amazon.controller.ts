@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Header, Headers, Param, Patch, Post } from "@nestjs/common";
 import { AmazonService } from "./amazon.service";
 import { CreateAmazonDto } from "./dto/create-amazon.dto";
 import { UpdateAmazonDto } from "./dto/update-amazon.dto";
@@ -16,6 +16,7 @@ export class AmazonController {
   }
 
   @Get()
+  @Header('content-type', 'application/x-www-form-urlencoded')
   findAll() {
     return this.amazonService.findAll();
   }
@@ -35,3 +36,5 @@ export class AmazonController {
     return this.amazonService.remove(+id);
   }
 }
+
+
